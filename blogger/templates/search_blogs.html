@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+
+{% block content %}
+  {% if searched %}
+    <h1>You searched for: {{ searched }}</h1>
+  <br>
+    {% for blog in blogs %}
+    {% if blog.pk %}
+        <p>
+            <a href="{% url 'main_blog' blog.pk %}">{{ blog.title }}</a> - {{ blog.author }}
+        </p>
+      </br>
+    {% endif %}
+{% endfor %}
+
+    <!-- Add your dynamic search results here -->
+  {% else %}
+    <h1>Oops, you forgot to search.</h1>
+  {% endif %}
+{% endblock %}
+
+

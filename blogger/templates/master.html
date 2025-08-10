@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  
+  
+  
+</head>
+<body>
+  <div class="header">
+      <a class = "hme" href="/">HOME</a> |   
+      <form method="POST" action="{% url 'search_blogs' %}">
+        {% csrf_token %}
+        <input  name="searched"class="search" type="search" placeholder="search" aria-label="search">
+        <button>search</button>
+      </form> 
+  </div>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

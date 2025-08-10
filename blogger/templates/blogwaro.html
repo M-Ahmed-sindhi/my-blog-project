@@ -1,0 +1,33 @@
+
+{% extends "master.html" %}
+{% block title %}
+mushk
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+    {% for Blog in blogs  %}
+   
+    <td class="blog-picture">
+        {% if Blog.picture %}
+            <div>
+                <input type="checkbox" id="popup-{{ Blog.pk }}" class="popup-toggle" hidden>
+                <label for="popup-{{ Blog.pk }}">
+                    <img src="{{ Blog.picture.url }}" width="150" height="auto" />
+                </label>
+                <div class="popup-text">
+                    This is picture
+                </div>
+            </div>
+        {% else %}
+            No image
+        {% endif %}
+    </td>
+    <td> <a href="{% url 'main_blog' Blog.pk %}">{{ Blog.title }}</a></td>
+    <td>{{Blog.author }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
+
